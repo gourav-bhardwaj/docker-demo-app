@@ -1,0 +1,29 @@
+version: "3.8"
+
+services: 
+  mongo-db:
+   image: mongo
+   networks:
+    - "my_network"
+   ports: 
+    - "27017:27017"
+   restart: "always" 
+   
+  docker-app: 
+   image: docker-demo-app:0.0.2-SNAPSHOT
+   build:
+    context: .
+    dockerfile: Dockerfile.dev
+   ports:
+    - "8090:8090"
+   networks:
+    - "my_network"
+   depends_on:
+    - "mongo-db"
+   environment:
+    SPRING_DATA_MONGODB_URI: mongodb://mongo-db:27017  
+   
+networks:
+  my_network: 
+      
+   

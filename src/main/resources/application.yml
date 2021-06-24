@@ -1,0 +1,10 @@
+server:
+  port: 8090
+ 
+spring:  application:    name: docker-demo-app  data:    mongodb:      uri: mongodb://127.0.0.1:27017
+      database: newdemodb
+      
+springdoc:  api-docs:    enabled: true 
+    path: /v2/api-docs
+  swagger-ui:    path: /swagger-ui  
+         
